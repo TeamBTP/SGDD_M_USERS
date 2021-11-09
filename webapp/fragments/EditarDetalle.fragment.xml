@@ -1,0 +1,59 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core" >
+	<VBox class="sapUiSmallMargin" >
+		<f:Form  
+			editable="true" >
+			<f:layout>
+				<f:ResponsiveGridLayout
+					labelSpanXL="4"
+					labelSpanL="4"
+					labelSpanM="4"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="0"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="3"
+					columnsL="2"
+					columnsM="2"
+					singleContainerFullSize="false" />
+			</f:layout>
+			<f:formContainers >
+				<f:FormContainer title="{i18n>title_detail_1}" >
+                    <f:formElements >
+                        <f:FormElement label="{i18n>ID_USUARIO}" >
+                            <f:fields>
+                                <Input value="{modelDetail>/userID}" id="oInput_userId_" liveChange="upperCaseValue" enabled="false"/>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>NOMBRE}">
+                            <f:fields>
+                                <Input value="{modelDetail>/name}" id="oInput_nombre_" liveChange="upperCaseValue" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>RUT}">
+                            <f:fields>
+                                <Input value="{modelDetail>/rut}" id="oInput_RUT_" liveChange="validandoRut"  />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>EMAIL}">
+                            <f:fields>
+                                <Input value="{modelDetail>/email}" id="oInput_email_" liveChange="emailValidador"/>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>VIGENTE_HASTA}">
+                            <f:fields>
+                                <DatePicker id="oDatePicker_vigente_hasta_" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd" value="{modelDetail>/effectiveDate}" visible="true" change="validarFecha">
+					            </DatePicker>
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+				</f:FormContainer>                
+			</f:formContainers>
+		</f:Form>
+	</VBox>
+</core:FragmentDefinition>

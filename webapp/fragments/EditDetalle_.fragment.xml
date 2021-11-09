@@ -1,0 +1,65 @@
+<core:FragmentDefinition
+    controllerName="sgddmdestinatario.controller.mantenedorDestinatario"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<Dialog title="{i18n>frag_edi_title_}" class="sapUiPopupWithPadding" contentWidth="300px" state="None" id="idDialogCreate">
+		<beginButton>
+			<Button text="{i18n>guardar}" press="_confirmDialogEdit_" type="Accept"/>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>salir}" press="_CerrarPopup" type="Reject"/>
+		</endButton>
+		<content>
+			<VBox class="sapUiSmallMargin">
+                <items>
+					<Label text="{i18n>COMPANIA}"/>
+				</items>
+				<items>
+					<ComboBox id="oCombobox_compania" items="{modelCompania>/}" showSecondaryValues="true" change="loadModelDivision" width="100%" enabled="false" placeholder="{i18n>seleccionar}">                        
+                        <core:ListItem key="{modelCompania>code}" text="{modelCompania>name}" additionalText="{modelCompania>code}"/>
+                    </ComboBox>
+				</items>
+                <items>
+					<Label text="{i18n>DIVISIONES}"/>
+				</items>
+				<items>
+					<ComboBox id="oCombobox_division" items="{modelDivision>/}" showSecondaryValues="true" change="loadModelSucursal" width="100%" enabled="false" placeholder="{i18n>seleccionar}">                        
+                        <core:ListItem key="{modelDivision>code}" text="{modelDivision>name}" additionalText="{modelDivision>code}"/>
+                    </ComboBox>
+				</items>
+                <items>
+					<Label text="{i18n>SUCURSAL}"/>
+				</items>
+				<items>
+					<ComboBox id="oCombobox_sucursal" items="{modelSucursal>/}" showSecondaryValues="true" change="loadModelPuntoEmision" width="100%" enabled="false" placeholder="{i18n>seleccionar}">                        
+                        <core:ListItem key="{modelSucursal>code}" text="{modelSucursal>name}" additionalText="{modelSucursal>code}"/>
+                    </ComboBox>
+				</items>
+                <items>
+					<Label text="{i18n>PUNTO_EMISION}"/>
+				</items>
+				<items>
+					<ComboBox id="oCombobox_puntoEmision" items="{modelPuntoEmision>/}" showSecondaryValues="true" width="100%" enabled="false" placeholder="{i18n>seleccionar}">                        
+                        <core:ListItem key="{modelPuntoEmision>code}" text="{modelPuntoEmision>name}" additionalText="{modelPuntoEmision>code}"/>
+                    </ComboBox>
+				</items>
+                <items>
+					<Label text=""/>
+				</items>
+				<items>
+                    <VBox alignItems="Center">
+                    <Label text="{i18n>VIGENTE}" design="Bold"/>
+                    </VBox>
+                    <VBox alignItems="Center">
+                    <CheckBox id="oCheckbox_Vigente" width="10px"/>
+                    </VBox>
+				</items>
+				<items>
+					<Label text=""/>
+				</items>
+			</VBox>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

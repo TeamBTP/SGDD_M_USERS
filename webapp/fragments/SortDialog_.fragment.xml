@@ -1,0 +1,16 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ViewSettingsDialog
+		confirm="handleSortDialogConfirm_">
+		<sortItems>
+			<ViewSettingsItem text="{i18n>NOMBRE_SUCURSAL}" key="name" selected="true" />
+			<ViewSettingsItem text="{i18n>COMUNA}" key="district" />
+            <ViewSettingsItem text="{i18n>CIUDAD}" key="state" />
+            <ViewSettingsItem text="{i18n>DIRECCION}" key="address" />
+            <ViewSettingsItem text="{i18n>TELEFONO}" key="phone" />
+            <ViewSettingsItem text="{i18n>EMAIL}" key="email" />
+			<ViewSettingsItem text="{i18n>VIGENTE}" key="active" />
+		</sortItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>

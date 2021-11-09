@@ -1,0 +1,49 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" fragmentName='oFragment_create'>
+	<Dialog title="{i18n>frag_cre_title}" class="sapUiPopupWithPadding" contentWidth="300px" state="None" id="idDialogCreate">
+		<beginButton>
+			<Button text="{i18n>guardar}" press="_confirmDialogCreate" type="Accept"/>
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>salir}" press="_CerrarPopup" type="Reject"/>
+		</endButton>
+		<content>
+			<VBox class="sapUiSmallMargin">
+                <items>
+					<Label text="{i18n>RUT}"/>
+				</items>
+				<items>
+					<Input id='oInput_RUT' 
+                    liveChange="validandoRut"  
+                    placeholder="{i18n>placeholderRut}"
+                    maxLength="12" 
+                    valueStateText="El rut no puede estar vacio"/>
+				</items>
+				<items>
+					<Label text="{i18n>NOMBRE}"/>
+				</items>
+				<items>
+					<Input id="oInput_nombre"  value="" enabled="true" maxLength="150" liveChange="upperCaseValue"/>
+				</items>
+                <items>
+                    <Label text="{i18n>ID_USUARIO}"/>
+				</items>
+				<items>
+					<Input id="oInput_userId"  value="" enabled="true" maxLength="150"  liveChange="upperCaseValue"/>
+				</items>
+                <items>
+                    <Label text="{i18n>EMAIL}"/>
+				</items>
+				<items>
+					<Input id="oInput_email"  value="" enabled="true" maxLength="150"  liveChange="emailValidador"/>
+				</items>
+                <items>
+                    <Label text="{i18n>VIGENTE_HASTA}"/>
+				</items>
+				<items>
+                    <DatePicker id="oDatePicker_vigente_hasta" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd" value="" visible="true" change="validarFecha">
+					</DatePicker>
+				</items>
+			</VBox>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

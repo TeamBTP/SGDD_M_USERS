@@ -1,0 +1,124 @@
+<mvc:View
+    controllerName="sgddmusers.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:tnt="sap.tnt"
+>
+	<Shell id="shell">
+		<App id="app">
+            <NavContainer id="mNavContainer">
+                <Page id="idPageMain" showHeader="true" title="{i18n>Page_Title}">
+                    <VBox alignContent="Center" alignItems="Center">
+                        <Panel id="idPanel">
+                            <Label text="{i18n>Escribir}" design="Bold" />
+                            <HBox >
+                            <SearchField id="idSearchField" placeholder="{i18n>escribirPlaceholder}" liveChange="onChangeBuscar"/>
+                            </HBox>
+                        </Panel>
+                    </VBox>
+                    <VBox >
+                    <Panel>
+                    <IconTabBar id="iconTabBar" expandable="false" expanded="false" class="sapUiResponsiveContentPadding" select="_onTabBarSelect">
+                            <items>
+                                <IconTabFilter text="{i18n>iconTab_registros}" count="{modelRecord>/records}" showAll="true" key="Resultado"></IconTabFilter>
+                                <IconTabSeparator/>
+                                <IconTabFilter icon="sap-icon://refresh" text="{i18n>iconTab_refrescar}" key="actualizar"></IconTabFilter>
+                                <IconTabFilter icon="sap-icon://add" text="{i18n>iconTab_Nuevo}" key="crear"></IconTabFilter>
+                            </items>
+                    </IconTabBar>
+                    </Panel>
+                    <Panel id="idPanelTable">
+                    <Table id='oTable' items="{modelUsers>/}" mode="None" >
+                        <headerToolbar>
+                            <OverflowToolbar >
+                                    <ToolbarSpacer/>
+                                    <CheckBox id="checkBox_log" text="{i18n>Log}" selected="false" select="onSelected_log"/>
+                                    <Button id="deleteButton" text="{i18n>iconTab_Eliminar}" type="Transparent" press="onDelete" visible="true"/>
+                                    <Button tooltip="{i18n>iconTab_Sort}" icon="sap-icon://sort" press="handleSortButtonPressed"/>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                            <columns>
+                                <Column visible="false" width="12em">
+                                    <Text text="{i18n>ID_CABECERA}"/>
+                                </Column>
+                                <Column >
+                                    <Text text="{i18n>ID_USUARIO}" />
+                                </Column>
+                                <Column width="auto">
+                                    <Text text="{i18n>NOMBRE}" />
+                                </Column>
+                                <Column >
+                                    <Text text="{i18n>RUT}" />
+                                </Column>
+                                <Column >
+                                    <Text text="{i18n>EMAIL}" />
+                                </Column>
+                                <Column width="auto">
+                                    <Text text="{i18n>VIGENTE_HASTA}"  />
+                                </Column>
+                                <Column visible="false" id="oTable_usCre">
+                                    <Text text="{i18n>oTable_usCre}" />
+                                </Column>
+                                <Column visible="false" id="oTable_fechCre">
+                                    <Text text="{i18n>oTable_fechCre}" />
+                                </Column>
+                                <Column visible="false" id="oTable_usMod">
+                                    <Text text="{i18n>oTable_usMod}" />
+                                </Column>
+                                <Column visible="false" id="oTable_fechMod">
+                                    <Text text="{i18n>oTable_fechMod}" />
+                                </Column>
+                                <Column visible="false" width="auto" id="col_saveButton">
+                                    <Text text="{i18n>iconTab_Editar}"/>
+                                </Column>
+                                <Column visible="false" width="auto" id="col_deleteButton">
+                                    <Text  text="{i18n>iconTab_Eliminar}"/>
+                                </Column>
+                            </columns>
+                                <items>
+                                    <ColumnListItem type="Navigation" press="handleNav">
+                                        <cells >
+                                            <Text text="{modelUsers>ID}" />
+                                            <Text text="{modelUsers>userID}" />
+                                            <Text text="{modelUsers>name}"/>
+                                            <Text text="{modelUsers>rut}"/>
+                                            <Text text="{modelUsers>email}"/>
+                                            <Text text="{modelUsers>effectiveDate}"/>
+                                            <!--<Text text="{= ${modelUsers>active} === true ? ${i18n>dialog_si} : ${i18n>dialog_no} }"/>-->
+                                            <Text text="{modelUsers>createdBy}"/>
+                                            <Text text="{modelUsers>createdAt}"/>
+                                            <Text text="{modelUsers>modifiedBy}"/>
+                                            <Text text="{modelUsers>modifiedAt}"/>
+                                            <Button icon="sap-icon://edit" press="_pop_actualizarRegistro" text="{i18n>iconTab_Editar}"></Button>
+                                            <Button icon="sap-icon://delete" press="_confirmDialogEliminar" text="{i18n>iconTab_Eliminar}"></Button>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </Panel>
+                    </VBox>
+                </Page>
+                <Page id="idPageDetail" title="{i18n>title}" showHeader="true" showNavButton="true" >
+                    <customHeader>
+                        <Bar>
+                            <contentLeft>
+                            <Button type="Transparent" icon="sap-icon://arrow-left" press="handleNav_back" />
+                            <Text text="{i18n>Volver}"/>
+                            </contentLeft>
+                            <contentRight>
+                                <Button text="{i18n>guardar}" type="Accept" icon="sap-icon://save"  id="save" visible="false" press="handleSavePress"/>
+                                <Button  text="{i18n>editar}" type="Emphasized" icon="sap-icon://edit" id="edit" visible="true" press="handleEditPress"/>
+                                <Button  text="{i18n>cancelar}" type="Reject" icon="sap-icon://decline" id="cancel" visible="false" press="handleCancelPress"/>
+                            </contentRight>
+                        </Bar>
+		            </customHeader>
+                </Page>
+                
+            </NavContainer>
+		</App>
+	</Shell>
+</mvc:View>

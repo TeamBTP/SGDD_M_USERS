@@ -1,0 +1,155 @@
+<core:FragmentDefinition
+    controllerName="sgddmdestinatario.controller.mantenedorDestinatario"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<VBox class="sapUiSmallMargin">
+		<Panel width="auto" class="sapUiResponsiveMargin" headerText="{i18n>Detalle}  {modelDetail>/name}">
+			<f:Form id="FormMostrarDetalle"
+                            editable="false">
+				<f:layout>
+					<f:ResponsiveGridLayout
+                                    labelSpanXL="3"
+                                    labelSpanL="3"
+                                    labelSpanM="3"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="4"
+                                    emptySpanL="4"
+                                    emptySpanM="4"
+                                    emptySpanS="0"
+                                    columnsXL="1"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false" />
+				</f:layout>
+				<f:formContainers >
+					<f:FormContainer >
+						<f:formElements >
+							<f:FormElement label="{i18n>ID_USUARIO}">
+								<f:fields>
+									<Text text="{modelDetail>/userID}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="{i18n>NOMBRE}">
+								<f:fields>
+									<Text text="{modelDetail>/name}"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="{i18n>RUT}">
+								<f:fields>
+									<Text text="{modelDetail>/rut}"    />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="{i18n>EMAIL}">
+								<f:fields>
+									<Text text="{modelDetail>/email}"    />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="{i18n>VIGENTE_HASTA}">
+								<f:fields>
+									<Text text="{modelDetail>/effectiveDate}" />
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+		</Panel>
+		<Panel expandable="true" expanded="true" id="panel_" headerText="{i18n>titulo_}" width="auto" class="sapUiResponsiveMargin">
+			<VBox>
+				<Panel id="idPanel_">
+					<Label text="{i18n>Escribir_}" design="Bold" />
+					<HBox >
+						<SearchField id="idSearchField_" placeholder="{i18n>escribirPlaceholder}" liveChange="onChangeBuscarTable_"/>
+					</HBox>
+				</Panel>
+			</VBox>
+			<VBox >
+				<IconTabBar id="iconTabBar_" expandable="false" expanded="false" class="sapUiResponsiveContentPadding" select="_onTabBarSelect_Fragment">
+					<items>
+						<IconTabFilter text="{i18n>iconTab_registros}" count="{modelRecord_>/records}" showAll="true" key="Resultado"></IconTabFilter>
+						<IconTabSeparator/>
+						<IconTabFilter icon="sap-icon://refresh" text="{i18n>iconTab_refrescar}" key="actualizar_"></IconTabFilter>
+						<IconTabFilter icon="sap-icon://add" text="{i18n>iconTab_Nuevo}" key="crear_"></IconTabFilter>
+					</items>
+				</IconTabBar>
+				<Panel id="idPanelTable_">
+					<Table id='oTable_' items="{modelPuntoEmision_>/}" mode="None" >
+						<headerToolbar>
+							<OverflowToolbar >
+								<ToolbarSpacer/>
+								<CheckBox id="checkBox_log_" text="{i18n>Log}" selected="false" select="onSelected_log_"/>
+								<Button id="editButton_" text="{i18n>iconTab_Editar}" type="Transparent" press="onEdit_" visible="true"/>
+								<Button id="deleteButton_" text="{i18n>iconTab_Eliminar}" type="Transparent" press="onDelete_" visible="true"/>
+								<Button tooltip="{i18n>iconTab_Sort}" icon="sap-icon://sort" press="handleSortButtonPressed_"/>
+							</OverflowToolbar>
+						</headerToolbar>
+						<columns>
+							<Column visible="false" width="12em" >
+								<Text text="{i18n>ID_CABECERA}"/>
+							</Column>
+							<Column >
+								<Text text="{i18n>COMPANIA_CODIGO}" />
+							</Column>
+							<Column width="auto">
+								<Text text="{i18n>COMPANIA_NOMBRE}" />
+							</Column>
+							<Column width="auto">
+								<Text text="{i18n>DIVISION_NOMBRE}"  />
+							</Column>
+							<Column width="auto">
+								<Text text="{i18n>SUCURSAL_NOMBRE}"  />
+							</Column>
+							<Column width="auto">
+								<Text text="{i18n>PUNTO_EMISION}"  />
+							</Column>							
+							<Column width="auto">
+								<Text text="{i18n>VIGENTE}"  />
+							</Column>
+							<Column visible="false" id="oTable_usCre_">
+								<Text text="{i18n>oTable_usCre}" />
+							</Column>
+							<Column visible="false" id="oTable_fechCre_">
+								<Text text="{i18n>oTable_fechCre}" />
+							</Column>
+							<Column visible="false" id="oTable_usMod_">
+								<Text text="{i18n>oTable_usMod}" />
+							</Column>
+							<Column visible="false" id="oTable_fechMod_">
+								<Text text="{i18n>oTable_fechMod}" />
+							</Column>
+							<Column visible="false" width="auto" id="col_editButton_">
+								<Text text="{i18n>iconTab_Editar}"/>
+							</Column>
+							<Column visible="false" width="auto" id="col_deleteButton_">
+								<Text  text="{i18n>iconTab_Eliminar}"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells >
+									<Text text="{modelPuntoEmision_>ID}" />
+									<Text text="{modelPuntoEmision_>companyCode}"/>
+									<Text text="{modelPuntoEmision_>companyName}"/>
+									<Text text="{modelPuntoEmision_>divisionName}"/>
+									<Text text="{modelPuntoEmision_>officeName}"/>
+									<Text text="{modelPuntoEmision_>emissionPointName}"/>
+									<Text text="{= ${modelPuntoEmision_>active} === true ? ${i18n>dialog_si} : ${i18n>dialog_no} }"/>
+									<Text text="{modelPuntoEmision_>createdBy}"/>
+									<Text text="{modelPuntoEmision_>createdAt}"/>
+									<Text text="{modelPuntoEmision_>modifiedBy}"/>
+									<Text text="{modelPuntoEmision_>modifiedAt}"/>
+									<Button icon="sap-icon://edit" press="_pop_editar_" text="{i18n>iconTab_Editar}"></Button>
+									<Button icon="sap-icon://delete" press="_confirmDialogEliminar_" text="{i18n>iconTab_Eliminar}"></Button>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</Panel>
+			</VBox>
+		</Panel>
+
+	</VBox>
+</core:FragmentDefinition>
