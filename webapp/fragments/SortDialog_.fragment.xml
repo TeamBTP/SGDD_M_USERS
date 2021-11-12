@@ -4,13 +4,10 @@
 	<ViewSettingsDialog
 		confirm="handleSortDialogConfirm_">
 		<sortItems>
-			<ViewSettingsItem text="{i18n>NOMBRE_SUCURSAL}" key="name" selected="true" />
-			<ViewSettingsItem text="{i18n>COMUNA}" key="district" />
-            <ViewSettingsItem text="{i18n>CIUDAD}" key="state" />
-            <ViewSettingsItem text="{i18n>DIRECCION}" key="address" />
-            <ViewSettingsItem text="{i18n>TELEFONO}" key="phone" />
-            <ViewSettingsItem text="{i18n>EMAIL}" key="email" />
-			<ViewSettingsItem text="{i18n>VIGENTE}" key="active" />
+			<ViewSettingsItem text="{i18n>COMPANIA_CODIGO}" key="companyCode" selected="true" />
+			<ViewSettingsItem text="{i18n>COMPANIA_NOMBRE}" key="companyName" />
+            <ViewSettingsItem text="{i18n>DIVISION_NOMBRE}" key="divisionName" />
+            <ViewSettingsItem text="{i18n>SUCURSAL_NOMBRE}" key="officeName" />
 		</sortItems>
 	</ViewSettingsDialog>
 </core:FragmentDefinition>

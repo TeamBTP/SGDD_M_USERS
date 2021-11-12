@@ -11,7 +11,7 @@
 	<Shell id="shell">
 		<App id="app">
             <NavContainer id="mNavContainer">
-                <Page id="idPageMain" showHeader="true" title="{i18n>Page_Title}">
+                <Page id="idPageMain" showHeader="false" title="{i18n>Page_Title}" >
                     <VBox alignContent="Center" alignItems="Center">
                         <Panel id="idPanel">
                             <Label text="{i18n>Escribir}" design="Bold" />

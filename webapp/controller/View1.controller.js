@@ -309,7 +309,7 @@ sap.ui.define([
             },
             handleSortDialogConfirm_: function (oEvent) {
                 var that = this;
-                var oTable = sap.ui.getCore().byId('oTablePtoEmision'),
+                var oTable = sap.ui.getCore().byId('oTable_'),
                     mParams = oEvent.getParameters(),
                     oBinding = oTable.getBinding("items"),
                     sPath,

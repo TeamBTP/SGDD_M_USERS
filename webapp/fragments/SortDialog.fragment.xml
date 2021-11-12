@@ -7,7 +7,7 @@
 			<ViewSettingsItem text="{i18n>ID_USUARIO}" key="rut" selected="true" />
 			<ViewSettingsItem text="{i18n>NOMBRE}" key="name" />
 			<ViewSettingsItem text="{i18n>RUT}" key="rut" />
-            <ViewSettingsItem text="{i18n>CORREO}" key="email" />
+            <ViewSettingsItem text="{i18n>EMAIL}" key="email" />
             <ViewSettingsItem text="{i18n>VIGENTE_HASTA}" key="enabled_until" />
 		</sortItems>
 	</ViewSettingsDialog>
